@@ -90,6 +90,16 @@ nav ul a::after {
   transition: width 0.3s ease;
 }
 
+/* Sembunyikan tombol hamburger di desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-accent);
+}
+
 nav ul a:hover::after {
   width: 100%;
 }
@@ -249,10 +259,6 @@ footer {
     margin-bottom: 40px;
   }
 
-  nav ul {
-    display: none; /* Sembunyikan navigasi di perangkat kecil untuk kesederhanaan */
-  }
-
   .about-content {
     flex-direction: column;
     text-align: center;
@@ -260,5 +266,82 @@ footer {
 
   .profile-img {
     margin-top: 30px;
+  }
+
+  /* Tampilkan tombol hamburger di mobile */
+  .menu-toggle {
+    display: block;
+    z-index: 1100; /* Pastikan di atas elemen lain */
+  }
+
+  /* Sembunyikan menu navigasi di mobile (Status Default) */
+  nav ul {
+    position: absolute;
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+
+    /* Sembunyikan dengan opacity dan transform */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  /* Tampilkan menu saat JS menambahkan kelas 'active' */
+  nav ul.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    z-index: 2000 !important; /* Memaksa menu tampil di lapisan paling atas */
+  }
+
+  /* Atur ulang gaya item list di mobile */
+  nav ul li {
+    margin: 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-light-bg);
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--color-primary);
+  }
+
+  /* Hapus efek hover garis bawah di mobile */
+  nav ul a::after {
+    display: none;
+  }
+}
+
+/* Pastikan menu desktop tetap normal */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none; /* Pastikan tombol hamburger tersembunyi */
+  }
+
+  /* Paksa menu desktop untuk selalu tampil horizontal */
+  nav ul {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: static !important;
+    flex-direction: row !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  nav ul li {
+    margin-left: 30px;
+  }
+
+  nav ul li a {
+    padding: 5px 0;
   }
 }

@@ -14,7 +14,10 @@
     <header>
       <nav class="container">
         <div class="logo">Azhar</div>
-        <ul>
+        <button class="menu-toggle" aria-label="Toggle Navigation">
+          &#9776;
+        </button>
+        <ul id="main-nav">
           <li><a href="#home">Home</a></li>
           <li><a href="#tentang">Tentang Saya</a></li>
           <li><a href="#keahlian">Keahlian</a></li>
@@ -27,10 +30,9 @@
       <section id="home" class="hero section-padding">
         <div class="container">
           <p class="greeting">Halo, saya</p>
-          <h1>Nama Lengkap Anda</h1>
+          <h1>Azhar Badriyah</h1>
           <p class="tagline">
-            Seorang **[Gelar/Profesi Anda]** dengan passion pada **[Bidang
-            Keahlian Utama]**.
+            Seorang sarjana komputer dengan passion pada Sistem Informasi.
           </p>
           <a href="#tentang" class="cta-button">Kenali Saya Lebih Lanjut</a>
         </div>
@@ -42,19 +44,20 @@
           <div class="about-content">
             <div class="text">
               <p>
-                Saya **[Nama Anda]**, seorang profesional **[Profesi]** yang
-                berfokus pada **[Tujuan Karir]**. Saya percaya pada desain yang
-                bersih dan fungsionalitas yang kuat.
+                Saya Azhar Badriyah, seorang perempuan yang berfokus pada karir
+                Sistem Informasi. Saya percaya pada desain yang bersih dan
+                fungsionalitas yang kuat.
               </p>
               <p>
-                Lulusan **[Universitas/Institusi]**. Di luar pekerjaan, saya
-                menikmati **[Hobi/Aktivitas]**. Saya selalu mencari kesempatan
-                untuk belajar dan berkolaborasi dalam proyek yang bermakna.
-                Silakan lihat keahlian saya di bawah!
+                Lulusan dari Institut Pendidikan Indonesia. Di luar pekerjaan,
+                saya menikmati pemandangan alam, memasak, bermain dengan kucing,
+                mendengarkan musik. Saya selalu mencari kesempatan untuk belajar
+                dan berkolaborasi dalam proyek yang bermakna. Silakan lihat
+                keahlian saya di bawah!
               </p>
             </div>
             <img
-              src="path/to/profile.jpg"
+              src="img/azhar.png"
               alt="Foto Profil Anda"
               class="profile-img"
             />
@@ -67,26 +70,34 @@
           <h2>Keahlian Utama ✨</h2>
           <div class="skills-grid">
             <div class="skill-item">
-              <h3>Desain Web (HTML/CSS)</h3>
+              <h3>Administrasi Bisnis</h3>
               <p>
-                Menguasai struktur dan gaya, fokus pada desain responsif dan
-                minimalis.
+                Menguasai proses pengelolaan administrasi dalam suatu
+                perusahaan, baik skala mikro, menengah dan makro dengan
+                pemanfaatan teknologi informasi.
               </p>
             </div>
             <div class="skill-item">
-              <h3>JavaScript</h3>
+              <h3>Microsoft Office</h3>
               <p>
-                Pengalaman dalam membuat interaksi dinamis dan fungsionalitas
-                front-end.
+                Berpengalaman dalam menggunakan perangkat lunak Word,
+                PowerPoint, Excel, Visio untuk membantu mengolah data yang
+                dibutuhkan.
               </p>
             </div>
             <div class="skill-item">
-              <h3>[Keahlian Lain]</h3>
-              <p>Deskripsi singkat tentang keahlian lain yang Anda miliki.</p>
+              <h3>Teamwork</h3>
+              <p>
+                Mampu bekerja dalam suatu tim maupun independen dengan tetap
+                mengikuti etos kerja yang berlaku.
+              </p>
             </div>
             <div class="skill-item">
-              <h3>[Keahlian Lain]</h3>
-              <p>Deskripsi singkat tentang keahlian lain yang Anda miliki.</p>
+              <h3>Multi Bahasa</h3>
+              <p>
+                Mampu menggunakan Bahasa Indonesia, Sunda, Inggris dan Korea
+                secara aktif baik lisan maupun tulisan.
+              </p>
             </div>
           </div>
         </div>
@@ -123,10 +134,46 @@
 
     <footer>
       <div class="container">
-        <p>
-          &copy; 2024 Azhar Badriyah. Dibuat dengan &hearts; dan Gaya Minimalis.
-        </p>
+        <p>&copy; 2024 Azhar Badriyah. Dibuat dengan &hearts;.</p>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Mencoba menjalankan script navigasi...");
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navList = document.querySelector("#main-nav");
+
+        if (menuToggle && navList) {
+          // SUKSES: Kedua elemen ditemukan
+          console.log(
+            "Output Sukses: Elemen ditemukan, listener klik ditambahkan!"
+          );
+
+          menuToggle.addEventListener("click", function () {
+            console.log("Tombol diklik! Kelas 'active' di-toggle.");
+            navList.classList.toggle("active");
+          });
+
+          // Menutup menu saat link diklik
+          navList.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              navList.classList.remove("active");
+            });
+          });
+        } else {
+          // GAGAL: Salah satu atau kedua elemen tidak ditemukan
+          console.error("--- DEBUGGING GAGAL ---");
+          if (!menuToggle) {
+            console.error("Output Gagal: Tombol .menu-toggle TIDAK DITEMUKAN.");
+          }
+          if (!navList) {
+            console.error("Output Gagal: Menu #main-nav TIDAK DITEMUKAN.");
+          }
+          console.error("Periksa salah ketik (typo) di file index.html!");
+          console.error("--------------------------");
+        }
+      });
+    </script>
   </body>
 </html>
