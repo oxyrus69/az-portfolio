@@ -220,6 +220,69 @@ h2 {
   font-size: 1.4rem;
 }
 
+/* -------------------- Bagian Proyek -------------------- */
+.project-grid {
+  display: grid;
+  /* Membuat kolom responsif: minimal 300px */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background-color: white;
+  border-radius: 10px;
+  /* Bayangan yang sama dengan .skill-item agar konsisten */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Penting agar gambar tidak keluar dari border-radius */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-img {
+  width: 100%;
+  height: 200px; /* Kita set tinggi gambar agar seragam */
+  object-fit: cover; /* Memastikan gambar terisi rapi tanpa distorsi */
+  display: block; /* Menghilangkan spasi aneh di bawah gambar */
+}
+
+.project-content {
+  padding: 25px; /* Ruang untuk teks di dalam kartu */
+}
+
+.project-content h3 {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  font-size: 0.95rem; /* Sedikit lebih kecil agar rapi */
+  margin-bottom: 20px;
+  color: var(--color-secondary);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap; /* Agar tag bisa pindah ke baris baru jika tidak muat */
+  gap: 8px;
+}
+
+.project-tags span {
+  background-color: var(
+    --color-light-bg
+  ); /* Warna abu-abu pucat dari palet kita */
+  color: var(--color-secondary);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem; /* Teks kecil untuk tag */
+  font-weight: 500;
+}
+
 /* -------------------- Bagian Kontak -------------------- */
 .contact-text {
   text-align: center;
